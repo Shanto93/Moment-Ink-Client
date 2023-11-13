@@ -9,13 +9,15 @@ const UpdateBlogDetails = () => {
         const form = e.target;
         const title = form.title.value;
         const photo = form.photo.value;
+        const owner = form.owner.value;
+        const owner_photo = form.owner_photo.value;
         const time = form.time.value;
         const category = form.category.value;
         const short_des = form.short_des.value;
         const long_des = form.long_des.value;
 
-        const updateBlog = {title, photo, category, time, short_des, long_des};
-        fetch(`http://localhost:5000/blog/${loadedBlog._id}`, {
+        const updateBlog = {title, photo, owner, owner_photo, category, time, short_des, long_des};
+        fetch(`https://moment-ink-server.onrender.com/blog/${loadedBlog._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -57,6 +59,23 @@ const UpdateBlogDetails = () => {
                                 <span className="label-text">Image URL</span>
                             </label>
                             <input type="text" name="photo" defaultValue={loadedBlog.photo} className="input input-bordered" required />
+                        </div>
+                    </div>
+
+                    {/* Owner Name and Owner Image Column */}
+                    <div className="md:flex gap-5">
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Owner Name</span>
+                            </label>
+                            <input type="text" name="owner" defaultValue={loadedBlog.owner} className="input input-bordered" required />
+                        </div>
+
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Owner Image URL</span>
+                            </label>
+                            <input type="text" name="owner_photo" defaultValue={loadedBlog.owner_photo} className="input input-bordered" required />
                         </div>
                     </div>
 

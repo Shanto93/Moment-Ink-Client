@@ -2,7 +2,9 @@ import { useLoaderData, useParams } from "react-router-dom";
 import BlogDetailsLayout from "./BlogDetailsLayout";
 
 
+
 const BlogDetails = () => {
+    
     const blogs = useLoaderData();
     // console.log(blog);
     const { _id } = useParams();
@@ -17,3 +19,5 @@ const BlogDetails = () => {
 };
 
 export default BlogDetails;
+
+

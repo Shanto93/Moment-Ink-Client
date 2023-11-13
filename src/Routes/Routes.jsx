@@ -23,18 +23,18 @@ const router = createBrowserRouter([
         {
             index: true,
             element: <Home></Home>,
-            // loader: () => fetch("http://localhost:5000/blog"),
+            // loader: () => fetch("https://moment-ink-server.onrender.com/blog"),
         },
         {
             path:'/blog/:_id',
             element:<PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-            loader: () => fetch("http://localhost:5000/blog"),
+            loader: () => fetch("https://moment-ink-server.onrender.com/blog"),
 
         },
         {
             path:'/update/:id',
             element:<PrivateRoute><UpdateBlogDetails></UpdateBlogDetails></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/blog/${params.id}`)
+            loader: ({params}) => fetch(`https://moment-ink-server.onrender.com/blog/${params.id}`)
         },
         {
             path:'/addBlog',
@@ -43,17 +43,17 @@ const router = createBrowserRouter([
         {
             path:'/allBlogs',
             element: <PrivateRoute><AllBlogs></AllBlogs></PrivateRoute>,
-            loader: () => fetch('http://localhost:5000/blog'),
+            loader: () => fetch('https://moment-ink-server.onrender.com/blog'),
         },
         {
             path:'/featuredBlogs',
             element: <PrivateRoute><FeaturedBlogs></FeaturedBlogs></PrivateRoute>,
-            loader: () => fetch('http://localhost:5000/users'),
+            loader: () => fetch('https://moment-ink-server.onrender.com/users'),
         },
         {
             path:'/wishList',
             element: <PrivateRoute><WishList></WishList></PrivateRoute>,
-            loader: () => fetch('http://localhost:5000/wishlist'),
+            loader: () => fetch('https://moment-ink-server.onrender.com/wishlist'),
         },
         {
             path:'/login',

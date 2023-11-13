@@ -1,6 +1,7 @@
 import RecentBlogsLayout from "./RecentBlogsLayout";
 import { useEffect, useState } from "react";
 
+
 const RecentBlogs = () => {
    
     const [sorted, setSorted] = useState([]);
@@ -12,7 +13,7 @@ const RecentBlogs = () => {
     }, []);
 
     const fetchData = () => {
-        fetch('http://localhost:5000/blog')
+        fetch('https://moment-ink-server.onrender.com/blog')
             .then((res) => res.json())
             .then((data) => setSorted(data));
     };
@@ -50,7 +51,7 @@ const RecentBlogs = () => {
             <h2 className="text-center text-4xl font-bold my-10">Posts</h2>
 
             <button className="btn ml-12 mr-7 bg-[#e74c3c] text-white font-bold hover:bg-[#e67e22]" onClick={sortAscending} disabled={isSorting}>Recent Post</button>
-            <button className="btn bg-[#e74c3c] text-white font-bold hover:bg-[#e67e22]" onClick={sortDescending} disabled={isSorting}>Old Post</button>
+            <button className="btn bg-[#e74c3c] mb-10 text-white font-bold hover:bg-[#e67e22]" onClick={sortDescending} disabled={isSorting}>Old Post</button>
             
 
             

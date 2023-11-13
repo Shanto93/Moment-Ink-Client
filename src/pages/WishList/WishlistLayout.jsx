@@ -8,7 +8,7 @@ const WishlistLayout = ({ cart, myCartData, setMyCartData }) => {
 
     const handleDelete = _id => {
         // console.log("Delete :",_id )
-        fetch(`http://localhost:5000/wishlist/${_id}`, {
+        fetch(`https://moment-ink-server.onrender.com/wishlist/${_id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

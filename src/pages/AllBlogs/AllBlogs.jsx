@@ -25,7 +25,7 @@ const AllBlogs = () => {
     // }
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/blog/page=${currentPage}&size={itemPerPage}`)
+    //     fetch(`https://moment-ink-server.onrender.com/blog/page=${currentPage}&size={itemPerPage}`)
     //     .then(res => res.json())
     //     .then(data => setBlogs(data))
     // },[currentPage,itemPerPage])

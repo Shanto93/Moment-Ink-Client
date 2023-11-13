@@ -1,9 +1,18 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
 const BlogDetailsLayout = ({ blo }) => {
     const { _id, title, photo, short_des, category, time, long_des } = blo;
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        fetch('https://moment-ink-server.onrender.com/users')
+        .then(res => res.json())
+        .then(data => setUsers(data))
+    },[])
+    console.log(users);
 
     const handleComment = (e) => {
         e.preventDefault();
@@ -23,7 +32,7 @@ const BlogDetailsLayout = ({ blo }) => {
         //     });
         //     return;
         // }
-            fetch('http://localhost:5000/users', {
+            fetch('https://moment-ink-server.onrender.com/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -55,7 +64,7 @@ const BlogDetailsLayout = ({ blo }) => {
 
                     {/* Comment Section */}
                     <div className="ml-16 mb-10">
-                        <h2 className="text-3xl font-bold mb-5">Comment</h2>
+                        <h2 className="text-3xl font-bold mb-5">Write comment here</h2>
                         <form onSubmit={handleComment} className="space-y-3">
                             <textarea name="comment" placeholder="Comment Here" cols="50" rows="3" className="border"></textarea>
 
@@ -76,6 +85,21 @@ const BlogDetailsLayout = ({ blo }) => {
                     <h2 className="text-xl"> <span className="text-xl font-bold">Short Description:</span > {short_des} </h2>
                     <p className="text-lg"> <span className="text-xl font-bold">Long Description:</span> {long_des} </p>
                     <Link to={`/update/${_id}`}><button className="btn w-full my-7 bg-[#e74c3c] text-white font-bold">Update</button></Link>
+                    <h2 className="text-3xl font-bold mt-5">Comments</h2>
+                    <div>
+                        {
+                            users.map((user, x) => 
+                                <div key={x}  className="hero bg-base-200">
+                                <div className="hero-content flex-col lg:flex-row justify-start">
+                                  <img src={user.image} className="h-20 w-20 rounded-full shadow-2xl" />
+                                  <div>
+                                    <h1 className="text-2xl font-bold">{user.owner}</h1>
+                                    <p className="py-6">{user.comment}</p>
+                                  </div>
+                                </div>
+                              </div>)
+                        }
+                    </div>
                 </div>
             </div>
 
@@ -84,3 +108,5 @@ const BlogDetailsLayout = ({ blo }) => {
 };
 
 export default BlogDetailsLayout;
+
+

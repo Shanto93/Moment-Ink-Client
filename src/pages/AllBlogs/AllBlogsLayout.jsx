@@ -13,7 +13,7 @@ const AllBlogsLayout = ({dat}) => {
             showConfirmButton: false,
             timer: 1500
         })
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://moment-ink-server.onrender.com/wishlist', {
             method:'POST',
             headers: {
                 'content-type': 'application/json',
@@ -30,7 +30,7 @@ const AllBlogsLayout = ({dat}) => {
     return (
         <div className="card md:w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
-                <img src={photo} alt="Shoes" className="rounded-xl" />
+                <img src={photo} alt="Shoes" className="rounded-xl h-56" />
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{title}</h2>
